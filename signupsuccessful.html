@@ -1,0 +1,399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>YOGA</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" ></link>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script | Poppins&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+body{	
+background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
+background-repeat: no-repeat;
+background-size: cover ;
+background-position: center ;
+height: 100vh;
+}
+button{
+    /*Change the width as much as you like, but make sure 
+    margin-left and margin-right + width = 100%*/
+    width:20%;
+    margin-left:40%;
+    margin-right:40%;
+    background-color: black;
+          border: 1px ;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          border-radius: 12px;
+          border: 2px solid ##555555;
+}
+</style>
+
+
+<p style="text-align:right; right:-10px;padding: 5px 20px;"> 
+
+  <a class="link" href="video.html" style="background-color: black;
+  border: 1px ;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 2px solid ##555555";>More Videos</a>
+
+</p>
+
+<section id ="banner"> 
+
+<div class="banner-text">
+    <h1 style="text-align:center; font-size:10vw;">YOGA</h1>
+<br></br>
+     <h1 style="text-align:center; font-size:3vw;">Inhale the future, exhale the past.</h1>
+ <div align="center" class="banner-btn">
+ 
+  <br></br>
+
+ </div>
+</div>
+
+</section>
+
+
+</body>
+
+<script>// UI comp 
+
+  const startBtn = document.createElement("button");
+  startBtn.innerHTML = "Let's Start!!";
+  const result = document.createElement("div");
+  const processing = document.createElement("p");
+  
+  document.body.append(startBtn);
+  document.body.append(result);
+  document.body.append(processing);
+  
+  // speech to text
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let toggleBtn = null;
+  if (typeof SpeechRecognition === "undefined") {
+	startBtn.remove();
+	result.innerHTML = "<b>Browser does not support Speech API. Please download latest chrome.<b>";
+} else {
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.onresult = event => {
+      const last = event.results.length - 1;
+      const res = event.results[last];
+      const text = res[0].transcript;
+      if (res.isFinal) {
+        processing.innerHTML = "processing ....";
+  
+        const response = process(text);
+        const p = document.createElement("p");
+        p.innerHTML = `You said: ${text} </br>Yoga Voice Assistant said: ${response}`;
+        processing.innerHTML = "";
+        result.appendChild(p);
+  
+        // text to speech
+        speechSynthesis.speak(new SpeechSynthesisUtterance(response));
+      } else {
+        processing.innerHTML = `listening: ${text}`;
+      }
+    }
+    let listening = false;
+    toggleBtn = () => {
+      if (listening) {
+        recognition.stop();
+        startBtn.textContent = "Let's Start";
+      } else {
+        recognition.start();
+        startBtn.textContent = "Stop";
+      }
+      listening = !listening;
+    };
+    startBtn.addEventListener("click", toggleBtn);
+  
+  }
+  
+  // processor
+  function process(rawText) {
+    let text = rawText.replace(/\s/g, "");
+    text = text.toLowerCase();
+    let response = null;
+    switch(text) {
+      case "padmasana":
+        response = window.open("https://youtu.be/gczDp7bKTyI"); break;
+      case "swastikasana":
+        response = window.open("https://youtu.be/YkIAzKczyOk");  break;
+      case "siddhasana":
+        response = window.open("https://youtu.be/zY1akHGkC5E"); break;
+      case "simhasana":
+        response = window.open("https://youtu.be/EF9oKF9ya_0"); break;
+      case "vajrasana":
+        response = window.open("https://youtu.be/tuDuKyyjjRw"); break;
+        case " full matsyendrasana":
+        response = window.open("https://youtu.be/ne3x3PfJXio"); break;
+        case " chakrasana":
+        response = window.open("https://youtu.be/Xiy_9tNjTD4");  break;
+        case " vrikshasana":
+        response = window.open("https://youtu.be/MAV-ZTj96Xk"); break;
+        case " pashu vishramasana'":
+        response = window.open("https://youtu.be/1LbfqllvZAQ");  break;
+        case " ardh chakrasana":
+        response = window.open("https://youtu.be/cQ3b7u7Heso"); break;
+        case "supta vajrasana":
+        response = window.open("https://youtu.be/4FfsrN_pLMA");  break;
+        case "purn bhujanasana":
+        response = window.open("https://youtu.be/g7rPI7fkDCQ"); break;
+        case "viprit naukasana":
+        response = window.open("https://youtu.be/hY9Tvu6yRxw");  break;
+        case "bhunamanasana":
+        response = window.open("https://youtu.be/FlHmXx9VFH8"); break;
+        case "marjriasana":
+        response = window.open("https://youtu.be/XAc_8cMmsHM");  break;
+        case "gupta padmasana":
+        response = window.open("https://youtu.be/IFd-t43u3CQ"); break;
+        case "veer bhadrasana":
+        response = window.open("https://youtu.be/xNTsu4ASvDo");  break;
+        case "phalakasana":
+        response = window.open("https://youtu.be/3TqGgyTUmIk"); break;
+        case "bhekasana":
+        response = window.open("https://youtu.be/oMsNE6qE5bQ");  break;
+        case "makarasana":
+        response = window.open("https://youtu.be/av2R5eJZQBI"); break;
+        case "grivasana":
+        response = window.open("https://youtu.be/_em4rjZrA3o");  break;
+        case "shavasana":
+        response = window.open("https://youtu.be/BVOvd92kmu0"); break;
+        case "shalabhasana":
+        response = window.open("https://youtu.be/8syS9eW1IUQ");  break;
+        case "padhastasana":
+        response = window.open("https://youtu.be/_jsgyXCKS44"); break;
+        case "kapotasana":
+        response = window.open("https://youtu.be/K7eEbZIpSD4");  break;
+        case "ardh matsyendrasana":
+        response = window.open("https://youtu.be/rIFjiLBRr4s"); break;
+        case "urdh hastuttanasana":
+        response = window.open("https://youtu.be/4Hsdue0-bXc");  break;
+        case "pasasana":
+        response = window.open("https://youtu.be/FOxjtWBC_cE"); break;
+        case "puran naukasana":
+        response = window.open("https://youtu.be/xoQHPAFtQGk");  break;
+        case "hasta padangusthasana":
+        response = window.open("https://youtu.be/IH72jTXjoIE"); break;
+        case "hansasana":
+        response = window.open("https://youtu.be/qUQ8dhgUKoY");  break;
+        case "santulanasana":
+        response = window.open("https://youtu.be/YpHF63hZISc"); break;
+        case "markatasana":
+        response = window.open("https://youtu.be/av2R5eJZQBI");  break;
+        case "yoga mudrasana":
+        response = window.open("https://youtu.be/lVE5jnb9mkM"); break;
+        case "sarpasana":
+        response = window.open("https://youtu.be/ZNXncLPVLZE"); break; 
+      case "garbhasana":
+        response = window.open("https://youtu.be/CNutJu4cEVQ"); break; 
+      case "ardha ustrasana":
+        response = window.open("https://youtu.be/GAHb30DC1j4"); break; 
+      case "makarasana":
+        response = window.open("https://youtu.be/av2R5eJZQBI"); break; 
+      case "kukkutasana":
+        response = window.open("https://youtu.be/ZjJBiSpJkxc"); break; 
+      case "katichakrasana":
+        response = window.open("https://youtu.be/70eoBb1A0x4"); break;   
+      case "uttanmandukasana":
+        response = window.open("https://youtu.be/_of8Z2aqva0"); break; 
+      case "trikonasana":
+        response = window.open("https://youtu.be/ZvhYtnTsTJA"); break; 
+      case "ushtrasana":
+        response = window.open("https://youtu.be/GTIdSI_QYQE"); break; 
+      case "adho mukha svanasana":
+        response = window.open("https://youtu.be/lAaxDhHGAbE"); break; 
+      case "padangushth nasasparshasan":
+        response = window.open("https://youtu.be/9vCnluPFm_Y"); break; 
+      case "ardh uttanpadasana":
+        response = window.open("https://youtu.be/hv-nM8vF8-U"); break; 
+      case "parighasana":
+        response = window.open("https://youtu.be/nGhKyKuvW8k"); break; 
+      case "ardha dhanurasana":
+        response = window.open("https://youtu.be/p813daUbHaA"); break; 
+      case "ashwa sanchalanasana":
+        response = window.open("https://youtu.be/gEAEulNHiyI"); break; 
+      case "ardh chandrasana":
+        response = window.open("https://youtu.be/501_i7ltzPI"); break; 
+      case "utthan pristhasana":
+        response = window.open("https://youtu.be/b932pG24rqE"); break;
+      case "halasana 2":
+        response = window.open("https://youtu.be/6-4UZozpU0g"); break;
+      case "markatasana 3":
+        response = window.open("https://youtu.be/qBgIEJjhKGM"); break;
+      case "ardha bhujanasana":
+        response = window.open("https://youtu.be/TFNAkuXZmIU"); break;
+      case "padangushth nasasparshasan 2":
+        response = window.open("https://youtu.be/t_7V5lxX7u4"); break;
+      case "shashankbhujangasana":
+        response = window.open("https://youtu.be/mXA-nWbrIdc"); break;
+      case "ardh naukasana":
+        response = window.open("https://youtu.be/q2xnB6JgBoI"); break;
+      case "veerasana":
+        response = window.open("https://youtu.be/UV_a8b2-O7E"); break;
+      case "uttana shishosana":
+        response = window.open("https://youtu.be/k7kjvJFWriU"); break;
+      case "sarvangasana 2":
+        response = window.open("https://youtu.be/bbZLOSOS-IA"); break;
+      case "anand balasana":
+        response = window.open("https://youtu.be/RACtwp-d8t0"); break;
+      case "vyaghrasana":
+        response = window.open("https://youtu.be/cv1yTDqf0JY"); break;
+      case "trikonasana 2":
+        response = window.open("https://youtu.be/GWO8gnewXJc"); break;  
+      case "Konasana":
+        response = window.open("https://youtu.be/qSifh1HJoDo"); break;
+        case "katiChakrasana":
+        response = window.open("https://youtu.be/TIBisrHrgRQ"); break;
+      case "katiChakrasana":
+        response = window.open("https://youtu.be/TIBisrHrgRQ");  break;
+case "chaturanga dandasana":
+        response = window.open("https://youtu.be/7A5wUfMEIh8"); break;
+case "half dhanurasana":
+        response = window.open("https://youtu.be/UQaTaoQDN9E"); break;										
+case "urdhva mukha shvanasana":
+        response = window.open("https://youtu.be/q8UnWVUP_jQ"); break;					
+case "utkatasana":
+        response = window.open("https://youtu.be/5YXWt2U9i7s"); break;
+case "eka pada rajakapotasana":
+        response = window.open("https://youtu.be/ifVHklOPIRY"); break;
+case "natrajasana":
+        response = window.open("https://youtu.be/fzWRhdfc-rw"); break;
+case "jaanuShirshasana ":
+        response = window.open("https://youtu.be/e1n131AC2_s"); break;
+case "ardha ustrasana":
+        response = window.open("https://youtu.be/MfEwLuoJMl4"); break;
+case "ek pad pranam asana":
+        response = window.open("https://youtu.be/Oiu_rgMRcUs"); break;
+case "balasana":
+        response = window.open("https://youtu.be/vqpmlA3hqwk"); break;
+case "padma sarvangasana ":
+        response = window.open("https://youtu.be/do8V4jc85Yc"); break;
+case "ardh bhekasana":
+        response = window.open("https://youtu.be/qEa0SxnN9F4"); break;
+case "padma sarvangasana":
+        response = window.open("https://youtu.be/-8oYBgWVKAU"); break;
+case "vakrasana":
+        response = window.open("https://youtu.be/2nz31BdXSyc"); break;
+case "santulanasana":
+        response = window.open("https://youtu.be/DLR0PDI_vac"); break;
+case "matsyasana":
+        response = window.open("https://youtu.be/SiJ7m7kTOhk"); break;
+case "ardhShalabhasana":
+        response = window.open("https://youtu.be/V0LBT_Qfh9"); break;
+case "ardhShalabhasana 2":
+        response = window.open("https://youtu.be/mRFuLGN4osM"); break;	
+case "triyak bhujangasana":
+        response = window.open("https://youtu.be/SrEZGUHLpnM"); break;
+case "mandukasana":
+        response = window.open("https://youtu.be/wVbA2YhMKzc"); break;
+case "shashankasana":
+        response = window.open("https://youtu.be/NRRAldWz9ps"); break;	
+case "markatasana":
+        response = window.open("https://youtu.be/av2R5eJZQBI"); break;
+case "padangusthasana":
+        response = window.open("https://youtu.be/IH72jTXjoIE"); break;			
+case "setuasana":
+        response = window.open("https://youtu.be/kXN34VsZczk"); break;
+case "lolasana":
+        response = window.open("https://youtu.be/dPvO_J_M2Rk"); break;		
+case "supta kapotasana":
+        response = window.open("https://youtu.be/K7eEbZIpSD4"); break;
+case "malaasana":
+        response = window.open("https://youtu.be/Uc7a09fXCLk"); break;
+case "virabhadrasana":
+        response = window.open("https://youtu.be/6KgIrb8QQF0"); break;
+case "kagasana":
+        response = window.open("https://youtu.be/LqC-xcY-sYo"); break;
+        case "siddhasana":
+        response = window.open("https://youtu.be/zY1akHGkC5E"); break;
+              case "swastikasana":
+                      response = window.open("https://youtu.be/YkIAzKczyOk");  break;
+case "simhasana":
+        response = window.open("https://youtu.be/EF9oKF9ya_0"); break;
+              case "vajrasana":
+                      response = window.open("https://youtu.be/tuDuKyyjjRw");  break;
+ case "padmasana":
+         response = window.open("https://youtu.be/gczDp7bKTyI"); break;
+                       case "pawanmuktasana":
+                                             response = window.open("https://youtu.be/4SW-PU0u7yE");  break;
+case "uttanpadasana":
+        response = window.open("https://youtu.be/-615IejHeVo"); break;
+                      case "bhadrasana":
+                                            response = window.open("https://youtu.be/AAZ4Bphoy_A");  break;
+case "bandhasana":
+        response = window.open("https://youtu.be/mSSK2gXA99U"); break;
+                      case "ardh padmasana":
+                                            response = window.open("https://youtu.be/Qll2NeqiW4k");  break;
+case "matsyasana'":
+        response = window.open("https://youtu.be/m8tI_XwYXAk"); break;
+                      case "swastikasana":
+                                            response = window.open("https://youtu.be/YkIAzKczyOk");  break;
+case "sarvangasana":
+        response = window.open("https://youtu.be/6NRN_6vxLJM"); break;
+                      case "gomukhasana":
+                                            response = window.open("https://youtu.be/OkBL6vPtjFQ");  break;
+case "dhanurasana":
+        response = window.open("https://youtu.be/pjmDExjnEVY"); break;
+                      case "sukhasana":
+                                            response = window.open("https://youtu.be/j8MxLKzYptM");  break;
+case "supta vajrasana":
+        response = window.open("https://youtu.be/4FfsrN_pLMA"); break;
+                      case "mudrasana":
+                                            response = window.open("https://youtu.be/lVE5jnb9mkM");  break;
+case "naukasana":
+        response = window.open("https://youtu.be/etHez6FjDb4"); break;
+                      case "bhujangasana":
+                                            response = window.open("https://youtu.be/VzCWlgn--aI");  break;
+case "virasana":
+        response = window.open("https://youtu.be/k-YdtNIYt9E"); break;
+                      case "triyak tadasana":
+                                            response = window.open("https://youtu.be/wrRgLAVXI2I");  break;
+case "shalabhasana":
+        response = window.open("https://youtu.be/R6yGDbaLnDA"); break;
+                      case "baddha padmasana":
+                                            response = window.open("https://youtu.be/pryd-RRvtmM");  break;
+case "kurmasana":
+        response = window.open("https://youtu.be/PKZ2jAfIcoE"); break;
+                      case "halasana":
+                                            response = window.open("https://youtu.be/4G72lVLwnvY");  break;
+case "tadasana":
+        response = window.open("https://youtu.be/wuR0t2hLqio"); break;
+                      case "garudasana":
+                                            response = window.open("https://youtu.be/iBtiXyykGQs");  break;
+case "viparita":
+        response = window.open("https://youtu.be/gczDp7bKTyI"); break;
+                      case "vakrasana":
+        response = window.open("https://youtu.be/213uOhp4J1Q"); break;
+case "utkatasana":
+                                            response = window.open("https://youtu.be/WjDODMWNc34");  break;
+    case "stop":
+        response = "Bye!!";
+        toggleBtn();
+    }
+    if (!response) {
+      window.open(`http://google.com/search?q=${rawText.replace("search", "")}`, "_blank");
+      return `I found some information for ${rawText}`;
+    }
+    return response;
+  }
+  </script>
+  </body>
+  </html>
